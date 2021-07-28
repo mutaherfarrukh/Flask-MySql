@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p class="text-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+        <h1>Add New Recipe</h1>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+        <a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+        <form action="/create_recipe" method="POST">
+            
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            <label for="description">Description:</label>
+            <textarea type="text" name="description"></textarea>
+            <label for="instruction" >Instructions:</label>
+            <textarea type="text" name="instruction"></textarea>
+
+            
+            <label for="date">Date Made on:</label>
+            <input type="date" id="date" name="date">
+            <br>
+            <p>Under 30 Minutes?</p>
+              <input type="radio" id="yes" name="under30min" value="Yes">
+              <label for="yes">YES</label>
+            <br>
+              <input type="radio" id="no" name="under30min" value="No">
+            <label for="css">No</label>
+            <button type="submit" class="btn btn-dark">Create</button>
+        </form> 
+    </div>
+
+    </div>
+</body>
+</html>
